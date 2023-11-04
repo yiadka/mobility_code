@@ -8,4 +8,4 @@ jupyterlab
 seaborn
 igraph
 sympy
-
+pymc3

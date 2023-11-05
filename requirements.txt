@@ -9,3 +9,4 @@ seaborn
 igraph
 sympy
 pymc3
+scikit-learn

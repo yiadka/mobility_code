@@ -1,3 +1,6 @@
+using Plots, GR
+gr()
+
 function RandonWalk(N, dTheta=π/100, R=1, xo=0, yo=0)
     X = zeros(N)
     Y = zeros(N)
@@ -17,9 +20,8 @@ function RandonWalk(N, dTheta=π/100, R=1, xo=0, yo=0)
     print("min: ", gmin, "\n")
     println("Distance:", sqrt((X[end]-xo)^2 + (Y[end]-yo)^2))
 
-    plot(X, Y, color="blue", linewidth=0.5, linestyle="-")
-    plot!(X[[1, end]], Y[[1, end]], color="red", marker=4,linewidth=0.5, linestyle="-")
+    Plots.plot(X, Y, color="blue")
+    Plots.plot(X[[1, end]], Y[[1, end]], color="red")
     
 end
-
 RandonWalk(50, pi/100)

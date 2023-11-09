@@ -1,0 +1,12 @@
+{
+	"folders": [
+		{
+			"path": "../.."
+		}
+	],
+	"settings": {
+		"cloudlatex.enabled": true,
+		"cloudlatex.projectId": 753936,
+		"julia.environmentPath": "/Users/yiadka/dev/mobility_code/julia/exercise"
+	}
+}

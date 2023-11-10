@@ -12,7 +12,7 @@ python main.py
 pip install -r requirements.txt
 ```
 としてライブラリを一括してインストールしています。
-追加で、`pip install jupyterlab`として`jupyter`を追加しても良いと思います。
+
 
 ## 使用しているライブラリ
 - numpy

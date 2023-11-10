@@ -19,3 +19,4 @@ def calc_N(Np, kappa):
 # Mを計算する
 def calc_M(Np, kappa):
     return (kappa * Np * (Np - 1)) / 8
+

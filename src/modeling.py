@@ -16,5 +16,12 @@ def model_beta(x, a, Np, m):
     ff = integrate.simps(f, a)
     return Np * (1 - ff * sec_part**(Np - 1))
 
+# 損失関数
+def loss_func(x, a, Np, m):
+    c = 0
+    for i in np.arange(len(a)):
+        p = model_beta(x, a[i], Np[i], m[i])
+        c += (m[i] - p)**2
+    return c
 
  

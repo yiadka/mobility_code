@@ -1,6 +1,10 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+from scipy import optimize
+
+# 自作モジュール
+from src import modeling as md
 
 def visualize_nm(node_list, edge_list):
     plt.figure(figsize=(12, 8))
@@ -19,4 +23,12 @@ def calc_N(Np, kappa):
 # Mを計算する
 def calc_M(Np, kappa):
     return (kappa * Np * (Np - 1)) / 8
+
+def calc_Np(edge, node):
+    # model2を用いてNpを計算
+    # NLSを用いてNpを計算
+    initial_guess = [1, 1]
+    popt, pcov = optimize.curve_fit(md.model2, edge, node, p0=initial_guess)
+    
+    return popt[1]
 

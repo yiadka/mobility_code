@@ -16,7 +16,7 @@ from src import modeling as md
 
 def main():
     file_path = "/Users/yiadka/dev/mobility_code/data/wholetime.csv"
-
+    print("=====================================")
     start = time.time()
     print("Loading the dataset...")
     df_left, df_right = dp.preprocess_data(file_path)
@@ -25,6 +25,7 @@ def main():
     elapsed_time = round(elapsed_time, 2)
     print("Loading the dataset is completed.")
     print("Loading dataset elapsed_time:{0}".format(elapsed_time) + "[sec]")
+    print("=====================================")
 
     # df_leftのノード数とエッジ数を取得
     print("Getting the number of nodes and edges...")
@@ -38,7 +39,18 @@ def main():
     elapsed_time = round(elapsed_time, 2)
     print("Getting elapsed_time:{0}".format(elapsed_time) + "[sec]")
 
-    eda.visualize_nm(node_left, edge_left)
+    # N-M plotを作成
+    # print("Creating N-M plot...")
+    # eda.visualize_nm(node_left, edge_left)
+    # eda.visualize_nm(node_right, edge_right)
+    
+    # Npを計算
+    print("=====================================")
+    print("Calculating Np...")
+    Np = eda.calc_Np(edge_left, node_left)
+    print("Np: ", Np)
+    print("Calculating Np is completed.")
+    print("=====================================")
 
 if __name__ == "__main__":
     main()

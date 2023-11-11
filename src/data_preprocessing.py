@@ -7,6 +7,7 @@ import warnings
 warnings.filterwarnings('ignore')
 warnings.simplefilter('ignore')
 import time
+import pickle
 
 # 自作モジュール
 from src import return_nmdt as rn
@@ -19,6 +20,10 @@ def load_data(file_name):
 def preprocess_data(data):
     df = pd.read_csv(data)
     df = df.dropna()
+    # pickleで保存
+    with open('data/df.pickle', mode='wb') as f:
+        pickle.dump(df, f)
+
 
     df_p1 = df[(df['started_at'] >= '2020-03-01') & (df['started_at'] < '2020-06-01')].dropna()
     df_p2 = df[(df['started_at'] >= '2020-06-01') & (df['started_at'] < '2020-11-01')].dropna()

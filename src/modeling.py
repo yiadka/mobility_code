@@ -38,15 +38,26 @@ def model2_calc(node, edge):
 
     return N_fit2, M_fit2
 
-def model_beta(x, a, Np, m):
-    f = a**(x[0]-1) * (1-a)**(x[1]-1) / special.beta(x[0], x[1])
-    sec_part = (1 - ((x[0] + x[1]) / x[0]) * 2*m*a / (Np**2 - Np))**(Np - 1)
+"""
+def model_beta(x, a, Np, m, alpha, beta):
+    f = a**(alpha-1) * (1-a)**(beta-1) / special.beta(alpha, beta)
+    sec_part = (1 - ((alpha + beta) / alpha) * 2*m*a / (Np**2 - Np))**(Np - 1)
     # fをaで微分
     ff = integrate.simps(f, a)
     return Np * (1 - ff * sec_part**(Np - 1))
+"""
+
+def model_beta(a, a_max, Np, m, alpha, beta):
+    f = lambda a: a**(alpha-1) * (1-a)**(beta-1) / special.beta(alpha, beta)
+    sec_part = (1 - ((alpha + beta) / alpha) * 2*m*a / (Np**2 - Np))**(Np - 1)
+    
+    # fをaで微分
+    ff, _ = integrate.quad(lambda a: a**(alpha-1) * (1-a)**(beta-1) / special.beta(alpha, beta), 0, a_max)
+    
+    return Np * (1 - ff * sec_part**(Np - 1))
 
 def fitting(x, a, Np, m):
-    popt, pcov = optimize.curve_fit(model_beta, x, m, p0=[a, Np, m])
+    popt, pcov = optimize.curve_fit(model_beta, x, m, p0=[0.1, 1000, 100])
     return popt
 
 # 損失関数

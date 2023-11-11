@@ -45,11 +45,17 @@ def main():
     # eda.visualize_nm(node_right, edge_right)
     
     # Npを計算
-    print("=====================================")
-    print("Calculating Np...")
-    Np = eda.calc_Np(edge_left, node_left)
+    # print("=====================================")
+    #print("Calculating Np...")
+    # Np = eda.calc_Np(edge_left, node_left)
+    #print("Np: ", Np)
+    #print("Calculating Np is completed.")
+    #print("=====================================")
+
+    # Npを計算(beta distributionで)
+    Np = eda.calc_Np_beta(edge_left, node_left)
     print("Np: ", Np)
-    print("Calculating Np is completed.")
+    print("calculating Np is completed.")
     print("=====================================")
 
 if __name__ == "__main__":

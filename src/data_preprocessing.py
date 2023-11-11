@@ -14,7 +14,6 @@ from src import return_nmdt as rn
 
 
 def preprocess_data(data):
-
     # df = pd.read_csv(data)
     # df = df.dropna()
     # pickleで保存

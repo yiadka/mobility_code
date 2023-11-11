@@ -27,8 +27,14 @@ def calc_M(Np, kappa):
 def calc_Np(edge, node):
     # model2を用いてNpを計算
     # NLSを用いてNpを計算
-    initial_guess = [1, 1]
+    initial_guess = [1000, 100]
     popt, pcov = optimize.curve_fit(md.model2, edge, node, p0=initial_guess)
-    
-    return popt[1]
+    Np = round(popt[1], 2)
+    return Np
+
+def calc_Np_beta(edge, node):
+    initial_guess = [0.1, 1000, 100, 1, 1]
+    popt, pcov = optimize.curve_fit(md.model_beta, edge, node, p0=initial_guess)
+    Np = round(popt[1], 2)
+    return Np
 

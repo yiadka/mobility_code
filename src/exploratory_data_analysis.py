@@ -32,9 +32,21 @@ def calc_Np(edge, node):
     Np = round(popt[1], 2)
     return Np
 
-def calc_Np_beta(edge, node):
-    initial_guess = [0.1, 1000, 100, 1, 1]
+def calc_Np_beta(edge, node, alpha, beta):
+    # a, Np, m, alpha, beta
+    Np = max(node)
+    initial_guess = [0.5, Np, 500, alpha, beta]
+    # alphaとbetaを繰り返し変更して最適な値を求める
     popt, pcov = optimize.curve_fit(md.model_beta, edge, node, p0=initial_guess)
     Np = round(popt[1], 2)
     return Np
 
+def estimate_Np_beta(edge, node):
+    Np_list = []
+    # alphaを0.01刻みで0から1まで変更
+    for i in range(101):
+        for j in range(101):
+            Np_list.append(calc_Np_beta(edge, node, alpha=i/100, beta=j/100))
+    
+    max_Np = max(Np_list)
+    return max_Np

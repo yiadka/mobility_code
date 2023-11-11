@@ -53,7 +53,9 @@ def main():
     #print("=====================================")
 
     # Npを計算(beta distributionで)
-    Np = eda.calc_Np_beta(edge_left, node_left)
+    print("=====================================")
+    print("Calculating Np...")
+    Np = eda.estimate_Np_beta(edge_left, node_left)
     print("Np: ", Np)
     print("calculating Np is completed.")
     print("=====================================")
